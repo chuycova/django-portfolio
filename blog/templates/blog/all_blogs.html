@@ -1,0 +1,20 @@
+Hello Blog
+
+{% extends 'portfolio/base.html' %}
+
+{% block content%}}
+
+<h1>Jesus Blog</h1>
+
+<h2>Se han escrito {{blogs.count}} blogs</h2>
+
+{% for blog in blogs %}
+  <a href="{% url 'blog:detail' blog.id %}"><h2>{{blog.titulo}}</h2></a> 
+  <h5>{{blog.date|date:'d M Y '|upper}}</h5>
+  <p> {{blog.descripcion|safe| truncatechars:50}} </p>
+  <p> {{blog.descripcion|striptags| truncatechars:50}} </p> 
+  <p> {{blog.descripcion| truncatechars:50}} </p> 
+
+  {%  endfor %}
+
+  {% endblock%}
